@@ -9,29 +9,34 @@ public class Miniräknare {
         boolean avsluta = false;
 
         while (!avsluta) {
+            double talSvar;
             String räknesätt = räknesätt(input);   //Hämtar vilket räknesätt som är valt från "räknesätt" metoden
             double[] userInput = tal(input, räknesätt);    //Hämtar dem valda talen från "tal" metoden, och skickar räknesätt till "tal" metoden
 
             switch (räknesätt) {
                 case "+":
-                    Addition(userInput[0], userInput[1]);
+                    talSvar = Addition(userInput[0], userInput[1]);
+                    System.out.printf("%.2f\n", talSvar);
                     break;
 
                 case "-":
-                    Subtraktion(userInput[0], userInput[1]);
+                    talSvar = Subtraktion(userInput[0], userInput[1]);
+                    System.out.printf("%.2f\n", talSvar);
                     break;
 
                 case "*":
-                    Multiplikation(userInput[0], userInput[1]);
+                    talSvar = Multiplikation(userInput[0], userInput[1]);
+                    System.out.printf("%.2f\n", talSvar);
                     break;
 
                 case "/":
-                    Division(userInput[0], userInput[1]);
+                    talSvar = Division(userInput[0], userInput[1]);
+                    System.out.printf("%.2f\n", talSvar);
                     break;
             }
             svar = avsluta(input);  //Tar emot använderns input från "avsluta" metoden
             if (svar == 2) {
-                avsluta = true;
+                avsluta = true; //Avslutar loopen så programmet stängs av
             } else if (svar != 1) {
                 System.out.println("Ogiltigt svar! Försök igen.");
             }
@@ -92,25 +97,20 @@ public class Miniräknare {
 
     //Räkne operationer
 
-    public static void Addition(double a, double b) {   //Addition
-        double svar = a + b;
-        System.out.printf("%.2f\n", svar);
+    public static double Addition(double a, double b) {   //Addition
+        return a + b;
     }
 
-    public static void Subtraktion(double a, double b) {   //Subtraktion
-        double svar = a - b;
-        System.out.printf("%.2f\n", svar);
+    public static double Subtraktion(double a, double b) {   //Subtraktion
+        return a - b;
     }
 
-    public static void Multiplikation(double a, double b) {   //Multiplikation
-        double svar = a * b;
-        System.out.printf("%.2f\n", svar);
-
+    public static double Multiplikation(double a, double b) {   //Multiplikation
+        return a * b;
     }
 
-    public static void Division(double a, double b) {   //Division
-        double svar = a / b;
-        System.out.printf("%.2f\n", svar);
+    public static double Division(double a, double b) {   //Division
+        return a / b;
     }
 
     public static int avsluta(Scanner input) {   //Metod för att avsluta eller fortsätta programmet
